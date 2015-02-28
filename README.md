@@ -35,6 +35,7 @@ The value can be retrieved using the value property, which you are responsible f
 
 Example:
 ```swift
+let luma = LumaJSON()
 if let parsed = luma.parse(jsonStr) {
     
     // Simple printing to the console to check JSON structure
