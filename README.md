@@ -26,7 +26,7 @@ Given a JSON structure such as:
 ```
 
 LumaJSON will recognize this as having a root NSDictionary node with three keys:
-user, friends_ids, and alert_message
+user, friend_ids, and alert_message
 
 These can be accessed using a subscript, and will return an Optional LumaJSONObject.
 
