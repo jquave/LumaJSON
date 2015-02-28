@@ -1,15 +1,15 @@
 LumaJSON
 ========
 
-An extremely simple and light-weigth Swift wrapper for Objective-C JSON parser
+An extremely simple and light-weight Swift wrapper for Objective-C JSON parser
 
 ### Usage
 
-To use this in your project, just copy the file in to your project. Normally I'm a fan of Cocoapods and all that, but it just seems completely unneccessary given the simplicity of what is really being done here.
+To use this in your project, just copy the file in to your project. Normally I'm a fan of Cocoapods and all that, but it just seems unneccessary given the simplicity of what is really being done here.
 
 Given a JSON structure such as:
 
-```
+```json
 {
     "user": {
         "name": "jquave",
@@ -34,7 +34,7 @@ The value can be retrieved using the value property, which you are responsible f
 
 
 Example:
-```
+```swift
 if let parsed = luma.parse(jsonStr) {
     
     // Simple printing to the console to check JSON structure
@@ -60,7 +60,7 @@ if let parsed = luma.parse(jsonStr) {
 ```
 
 Output to console:
-```
+```swift
 LumaJSONObject: Optional({
     "alert_message" = "Please verify e-mail address to continue";
     "friend_ids" =     (
