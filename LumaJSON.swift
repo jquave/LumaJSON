@@ -13,14 +13,11 @@ class LumaJSONObject: Printable {
     var value: AnyObject?
     
     subscript(index: Int) -> LumaJSONObject? {
-        get {
-            return (value as? [AnyObject]).map { LumaJSONObject($0[index]) }
-        }
+        return (value as? [AnyObject]).map { LumaJSONObject($0[index]) }
     }
+    
     subscript(key: String) -> LumaJSONObject? {
-        get {
-            return (value as? NSDictionary).map { LumaJSONObject($0[key]) }
-        }
+        return (value as? NSDictionary).map { LumaJSONObject($0[key]) }
     }
     
     subscript(key: String) -> AnyObject? {
