@@ -14,19 +14,24 @@ class LumaJSONObject: Printable {
     
     subscript(index: Int) -> LumaJSONObject? {
         get {
-            if let val = value as? NSArray {
-                return LumaJSONObject(val[index])
-            }
-            return nil
+            return (value as? [AnyObject]).map { LumaJSONObject($0[index]) }
         }
     }
     subscript(key: String) -> LumaJSONObject? {
         get {
-            
-            if let val = value as? NSDictionary {
-                return LumaJSONObject(val[key])
-            }
-            return nil
+            return (value as? NSDictionary).map { LumaJSONObject($0[key]) }
+        }
+    }
+    
+    subscript(key: String) -> AnyObject? {
+        get {
+            return self[key]?.value
+        }
+    }
+    
+    subscript(key: Int) -> AnyObject? {
+        get {
+            return self[key]?.value
         }
     }
     

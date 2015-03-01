@@ -28,10 +28,7 @@ Given a JSON structure such as:
 LumaJSON will recognize this as having a root NSDictionary node with three keys:
 user, friend_ids, and alert_message
 
-These can be accessed using a subscript, and will return an Optional LumaJSONObject.
-
-The value can be retrieved using the value property, which you are responsible for casting to the appropriate type, based on your JSON schema.
-
+These can be accessed using a subscript, and will return either an Optional LumaJSONObject or an object of the expected type if cast.
 
 Example:
 ```swift
@@ -40,19 +37,19 @@ if let parsed = luma.parse(jsonStr) {
     
     // Simple printing to the console to check JSON structure
     println(parsed)
-    
+
     // Simple Key/Value retreival
-    if let alertMessage = parsed["alert_message"]?.value as? String {
+    if let alertMessage = parsed["alert_message"] as? String {
         println("Alert: \(alertMessage)")
     }
     
     // Nested JSON
-    if let userName = parsed["user"]?["name"]?.value as? String {
+    if let userName = parsed["user"]?["name"] as? String {
         println("Username is \(userName)")
     }
     
     // Nested object casting works using Swift's built-in mechanisms
-    if let friendIDs = parsed["friend_ids"]?.value as? [Int] {
+    if let friendIDs = parsed["friend_ids"] as? [Int] {
         for friendID in friendIDs {
             println("Friend ID: \(friendID)")
         }
