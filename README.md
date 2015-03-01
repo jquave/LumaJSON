@@ -32,8 +32,7 @@ These can be accessed using a subscript, and will return either an Optional Luma
 
 Example:
 ```swift
-let luma = LumaJSON()
-if let parsed = luma.parse(jsonStr) {
+if let parsed = LumaJSON.parse(jsonStr) {
     
     // Simple printing to the console to check JSON structure
     println(parsed)

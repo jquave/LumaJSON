@@ -46,9 +46,9 @@ class LumaJSONObject: Printable {
     }
 }
 
-class LumaJSON {
+struct LumaJSON {
     
-    func parse(json: String) -> LumaJSONObject? {
+    static func parse(json: String) -> LumaJSONObject? {
         if let jsonData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false){
             var err: NSError?
             
