@@ -45,6 +45,8 @@ class LumaJSONObject: Printable {
 
 struct LumaJSON {
     
+    static var logErrors = true
+    
     static func jsonFromObject(object: [String: AnyObject]) -> String? {
         var err: NSError?
         if let jsonData = NSJSONSerialization.dataWithJSONObject( (object as NSDictionary) , options: nil, error: &err) {
@@ -53,7 +55,9 @@ struct LumaJSON {
             }
         }
         else if(err != nil) {
-            println( err?.localizedDescription )
+            if LumaJSON.logErrors {
+                println( err?.localizedDescription )
+            }
         }
         return nil
     }
@@ -70,6 +74,10 @@ struct LumaJSON {
             
             if let parsedDictionary = parsed as? NSDictionary {
                 return LumaJSONObject(parsedDictionary)
+            }
+            
+            if LumaJSON.logErrors && (err != nil) {
+                println(err?.localizedDescription)
             }
             
             return LumaJSONObject(parsed)
