@@ -78,6 +78,24 @@ Friend ID: 341
 Friend ID: 492
 ```
 
+### Encoding Swift objects to JSON
+
+Encoding objects as JSON requires creating an object that adheres to [String: AnyObject] at the root level.
+
+```swift
+var myData = [String: AnyObject]()
+myData["friend_count"] = 4
+myData["username"] = "jquave"
+
+if let str = LumaJSON.jsonFromObject(myData) {
+  println(str)
+}
+```
+
+Outputs:
+```
+{"username":"jquave","friend_count":4}
+```
 
 Under MIT License
 http://opensource.org/licenses/MIT

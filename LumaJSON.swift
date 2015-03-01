@@ -45,6 +45,19 @@ class LumaJSONObject: Printable {
 
 struct LumaJSON {
     
+    static func jsonFromObject(object: [String: AnyObject]) -> String? {
+        var err: NSError?
+        if let jsonData = NSJSONSerialization.dataWithJSONObject( (object as NSDictionary) , options: nil, error: &err) {
+            if let jsonStr = NSString(data: jsonData, encoding: NSUTF8StringEncoding) {
+                return jsonStr as String
+            }
+        }
+        else if(err != nil) {
+            println( err?.localizedDescription )
+        }
+        return nil
+    }
+    
     static func parse(json: String) -> LumaJSONObject? {
         if let jsonData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false){
             var err: NSError?
