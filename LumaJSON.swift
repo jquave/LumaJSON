@@ -85,3 +85,17 @@ struct LumaJSON {
         return nil
     }
 }
+
+extension String {
+    func toJSON() -> LumaJSONObject? {
+        return LumaJSON.parse(self)
+    }
+    
+    init? (jsonDictionary: [String: AnyObject]) {
+        if let t = LumaJSON.jsonFromObject(jsonDictionary) {
+            self = t
+        } else {
+            return nil
+        }
+    }
+}
